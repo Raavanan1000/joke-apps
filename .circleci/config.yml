@@ -11,7 +11,6 @@ commands:
       HEROKU_APP_NAME:
         type: string
     steps:
-      - run: heroku config:set YARN_PRODUCTION=false -a <<parameters.HEROKU_APP_NAME>>
       - run: git push https://heroku:$HEROKU_TOKEN@git.heroku.com/<<parameters.HEROKU_APP_NAME>>.git <<parameters.BRANCH>>:main
 
 
