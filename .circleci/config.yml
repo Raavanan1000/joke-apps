@@ -10,6 +10,11 @@ jobs:
     steps:
       - checkout
 
+      - restore_cache:
+          name: Restore pnpm Package Cache
+          keys:
+            - pnpm-packages-{{ checksum "pnpm-lock.yaml" }}
+
       - run:
           name: Install pnpm package manager
           command: |
@@ -20,7 +25,14 @@ jobs:
           command: |
             pnpm install
             pnpm build
+      
+      - save_cache:
+          name: Save pnpm Package Cache
+          key: pnpm-packages-{{ checksum "pnpm-lock.yaml" }}
+          paths:
+            - node_modules
 
       - run:
           name: Test app
           command: pnpm test
+
