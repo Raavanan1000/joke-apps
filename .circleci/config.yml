@@ -1,0 +1,26 @@
+version: 2.1
+
+jobs:
+  build: # this can be any name you choose
+    docker:
+      - image: node:16
+    resource_class: large
+    parallelism: 10
+
+    steps:
+      - checkout
+
+      - run:
+          name: Install pnpm package manager
+          command: |
+            curl -L https://pnpm.js.org/pnpm.js | node - add --global pnpm@7
+
+      - run:
+          name: Build app
+          command: |
+            pnpm install
+            pnpm build
+
+      - run:
+          name: Test app
+          command: pnpm test
