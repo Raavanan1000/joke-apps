@@ -58,14 +58,22 @@ jobs:
     parallelism: 10
 
     steps:
-      - attach_workspace:
-          # Must be absolute path or relative path from working_directory
-          at: ~/project/
+      - checkout
+
+      - restore_cache:
+          name: Restore pnpm Package Cache
+          keys:
+            - pnpm-packages-{{ checksum "pnpm-lock.yaml" }}
 
       - run:
           name: Install pnpm package manager
           command: |
             curl -L https://pnpm.js.org/pnpm.js | node - add --global pnpm@7
+
+      - run:
+          name: Build app
+          command: |
+            pnpm install
 
       - run:
           name: Test app
@@ -98,9 +106,8 @@ workflows:
                 branches:
                   only:
                     - master
-        - test:
-            requires:
-              - build
+        - test
         - deploy:
             requires:
+              - build
               - test
