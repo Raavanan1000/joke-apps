@@ -59,3 +59,8 @@ jobs:
           name: Test app
           command: pnpm test
 
+workflows:
+    build:
+      jobs:
+        - build
+        - test
