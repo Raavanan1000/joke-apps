@@ -32,6 +32,11 @@ jobs:
           paths:
             - node_modules
 
+      - persist_to_workspace:
+          paths:
+            - "."
+          root: ~/project
+
   test: # this can be any name you choose
     docker:
       - image: node:16
@@ -39,21 +44,14 @@ jobs:
     parallelism: 10
 
     steps:
-      - checkout
-      - restore_cache:
-          name: Restore pnpm Package Cache
-          keys:
-            - pnpm-packages-{{ checksum "pnpm-lock.yaml" }}
+      - attach_workspace:
+          # Must be absolute path or relative path from working_directory
+          at: ~/project/
 
       - run:
           name: Install pnpm package manager
           command: |
             curl -L https://pnpm.js.org/pnpm.js | node - add --global pnpm@7
-
-      - run:
-          name: Build app
-          command: |
-            pnpm install
 
       - run:
           name: Test app
@@ -63,4 +61,6 @@ workflows:
     build:
       jobs:
         - build
-        - test
+        - test:
+            requires:
+              - build
