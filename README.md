@@ -35,6 +35,8 @@ on:
     branches: ["main"]
 ```
 
+Our workflow will now run everytime we **push** to the branch **main**
+
 Finally, we will setup a basic Node environnement to build and test our app :
 
 ```yaml
