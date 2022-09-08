@@ -1,0 +1,26 @@
+name: Build and Test
+
+on:
+  push:
+    branches: ["docker-deploy"]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Echo branch name
+        run: |
+          GITHUB_REF=refs/heads/feature-branch-1
+          echo $GITHUB_REF
+
+      - name: Extract branch name
+        shell: bash
+        run: |
+          echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+          echo ${GITHUB_REF#refs/heads/})
+        id: extract_branch
+
+      - uses: ryolambert/current-branch@v1.0
