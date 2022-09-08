@@ -14,9 +14,8 @@ jobs:
       - uses: nelonoel/branch-name@v1
       - name: Echo branch name
         run: |
-          echo "##[set-output name=branch;]${GITHUB_REF#refs/heads/}"
+          echo "::set-output name=branch::${GITHUB_REF#refs/heads/}"
           echo ${GITHUB_REF#refs/heads/}
-          echo ${BRANCH_NAME}
 
       - name: Uesh
         run: echo ${{ steps.extract_branch.outputs.branch }}
