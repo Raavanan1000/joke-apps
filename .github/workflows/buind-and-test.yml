@@ -1,0 +1,29 @@
+name: Build and Test
+
+on:
+  push:
+    branches: ["docker-deploy"]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Use Node.js 16
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - uses: pnpm/action-setup@v2.0.1
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 7
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Unit Tests
+        run: pnpm test
