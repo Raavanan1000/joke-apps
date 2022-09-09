@@ -59,4 +59,5 @@ jobs:
 
       - name: Print release info
         run: |
-          echo ${{ steps.tag-update.outputs }}
+          echo Changelog: ${{ steps.tag-update.outputs.changelog }}
+          echo Version ${{ steps.tag-update.outputs.version }}
