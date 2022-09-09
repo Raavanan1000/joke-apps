@@ -7,11 +7,5 @@
     },
     "hooks": {
         "after:bump": "npx auto-changelog -p"
-    },
-    "plugins": {
-        "@release-it/bumper": {
-            "in": "version.json",
-            "out": "version.json"
-        }
     }
 }
