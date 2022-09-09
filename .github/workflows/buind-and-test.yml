@@ -2,7 +2,7 @@ name: Build and Test
 
 on:
   push:
-    branches: ["docker-deploy"]
+    branches: ["main"]
 
 jobs:
   build-and-test:
