@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Use Node.js 16
         uses: actions/setup-node@v3
@@ -40,3 +40,13 @@ jobs:
 
       - name: Unit Tests
         run: pnpm test
+
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: release-it
+        uses: TheRealWaldo/release-it@v0.7.2
+        with:
+          json-opts: '{"dry-run": true}'
