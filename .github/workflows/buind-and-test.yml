@@ -55,3 +55,4 @@ jobs:
         with:
           json-opts: |
             '{"dry-run": true, "npm": false}'
+          debug: true
