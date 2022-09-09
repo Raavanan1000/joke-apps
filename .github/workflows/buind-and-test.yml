@@ -54,10 +54,5 @@ jobs:
         id: tag-update
         uses: TheRealWaldo/release-it@v0.7.2
         with:
-          json-opts: '{"npm": false}'
+          json-opts: '{"npm": false, "github": { "release": true } }'
           debug: true
-
-      - name: Print release info
-        run: |
-          echo Changelog: ${{ steps.tag-update.outputs.changelog }}
-          echo Version: ${{ steps.tag-update.outputs.version }}
