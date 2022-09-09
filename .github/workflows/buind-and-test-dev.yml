@@ -51,4 +51,4 @@ jobs:
           persist-credentials: false
 
       - name: Echo latest tag
-        run: git describe --tags --abbrev=0
+        run: git describe --tags --abbrev=0 
