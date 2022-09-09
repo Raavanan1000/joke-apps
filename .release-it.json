@@ -1,3 +1,5 @@
 {
-    "npm": false
+    "npm": {
+        "release": false
+    }
 }
