@@ -54,4 +54,4 @@ jobs:
         uses: TheRealWaldo/release-it@v0.7.2
         with:
           json-opts: |
-            '{"dry-run": true}'
+            '{"dry-run": true, "npm": false}'
