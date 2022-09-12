@@ -1,0 +1,20 @@
+name: Test workflow
+
+on: 
+  push: 
+
+jobs: 
+  test:
+    run-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+      - run: nppm ci
+      - run: npm run build
+      - run: npm test
+
+      - name: Echo the name
+      - run: echo nom
