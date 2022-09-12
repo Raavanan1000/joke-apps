@@ -1,10 +1,10 @@
 FROM node:16 AS builder
 WORKDIR "/app"
 COPY . .
-RUN npm install -g pnpm
-RUN pnpm i
-RUN pnpm run build
-RUN pnpm prune --production
+RUN npm install -g npm
+RUN npm i
+RUN npm run build
+RUN npm prune --production
 FROM node:16-alpine AS production
 WORKDIR "/app"
 COPY --from=builder /app/package.json ./package.json
