@@ -6,8 +6,6 @@ on:
 jobs: 
   build-test:
     runs-on: ubuntu-latest
-    
-    needs: build-test
 
     steps:
       - uses: actions/checkout@v3
