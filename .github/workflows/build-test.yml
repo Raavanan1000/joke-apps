@@ -1,0 +1,27 @@
+name: Test Workflow
+
+on:
+  push:
+    branches:
+      - "main"
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: action/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Install dependencies
+        run: |
+          npm ci
+          npm run build
+
+      - name: Test the application
+        run: |
+          npm test
+      
