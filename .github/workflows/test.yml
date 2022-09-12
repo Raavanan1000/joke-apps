@@ -15,6 +15,3 @@ jobs:
       - run: nppm ci
       - run: npm run build
       - run: npm test
-
-      - name: Echo the name
-      - run: echo nom
