@@ -22,7 +22,6 @@ describe('AppController', () => {
       expect(joke).toHaveProperty('id');
       expect(joke).toHaveProperty('category');
       expect(joke).toHaveProperty('type');
-      expect(joke).toHaveProperty('typo');
     });
 
     it('should return the api version ', async () => {
