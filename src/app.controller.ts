@@ -22,7 +22,7 @@ export class AppController {
 
       return { joke, version: this.apiVersion };
     } catch (error) {
-      console.log({ error });
+      
     }
   }
 }
