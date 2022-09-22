@@ -6,7 +6,7 @@ orbs:
   docker: circleci/docker@2.1.3
 
 jobs:
-  docker:
+  docker-img:
     machine:
       image: ubuntu-2204:2022.04.2
     steps:
@@ -38,7 +38,7 @@ workflows:
           filters:
             branches:
               only: circleci
-      - docker/publish:
+      - docker-img:
           filters:
             branches:
               only: circleci
