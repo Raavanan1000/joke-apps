@@ -29,8 +29,9 @@ workflows:
               only: circleci
       - docker/publish:
           image: kagistan1/app:latest
-          docker-username: $DOCKER_USER
-          docker-password: $DOCKER_PASSWORD
+          auth: 
+            username: $DOCKER_USER
+            password: $DOCKER_PASSWORD
           requires:
             - node/run
             - node/test
