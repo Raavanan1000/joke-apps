@@ -13,8 +13,8 @@ jobs:
       - checkout
       - run: |
           echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USER --password-stdin
-      - run: docker build -t $DOCKER_LOGIN/joke-api:$CIRCLE_BRANCH .
-      - run: docker push $DOCKER_LOGIN/joke-api:$CIRCLE_BRANCH
+      - run: docker build -t $DOCKER_USER/joke-api:$CIRCLE_BRANCH .
+      - run: docker push $DOCKER_USER/joke-api:$CIRCLE_BRANCH
       
 workflows:
   build-tets:
