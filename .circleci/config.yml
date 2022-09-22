@@ -3,6 +3,7 @@ version: 2.1
 orbs:
   node: circleci/node@5.0.2
   heroku: circleci/heroku@1.2.6
+  docker: circleci/docker@2.1.3
 
 workflows:
   build-tets:
@@ -23,6 +24,16 @@ workflows:
             - node/run
             - node/test
           app-name: "joke-apli"
+          filters:
+            branches:
+              only: circleci
+      - docker/publish:
+          image: kagistan1/app:latest
+          docker-username: $DOCKER_USER
+          docker-password: $DOCKER_PASSWORD
+          requires:
+            - node/run
+            - node/test
           filters:
             branches:
               only: circleci
