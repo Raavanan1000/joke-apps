@@ -18,14 +18,11 @@ workflows:
           filters:
             branches:
               only: circleci
-
-deploy:
-  jobs:
-    - heroku/deploy-via-git:
-        requires:
-          - node/run
-          - node/test
-        app-name: "application-joke"
-        filters:
-          branches:
-            only: circleci
+      - heroku/deploy-via-git:
+          requires:
+            - node/run
+            - node/test
+          app-name: "joke-apli"
+          filters:
+            branches:
+              only: circleci
