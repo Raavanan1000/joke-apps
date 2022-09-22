@@ -2,6 +2,7 @@ version: 2.1
 
 orbs:
   node: circleci/node@5.0.2
+  heroku: circleci/heroku@1.2.6
 
 workflows:
   build-tets:
@@ -17,3 +18,14 @@ workflows:
           filters:
             branches:
               only: circleci
+
+deploy:
+  jobs:
+    - heroku/deploy-via-git:
+        requires:
+          - node/run
+          - node/test
+        app-name: "application-joke"
+        filters:
+          branches:
+            only: circleci
